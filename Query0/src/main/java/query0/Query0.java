@@ -30,25 +30,25 @@ import org.apache.beam.sdk.nexmark.queries.NexmarkQueryTransform;
 import org.apache.beam.sdk.transforms.DoFn;
 import org.apache.beam.sdk.transforms.ParDo;
 import org.apache.beam.sdk.values.PCollection;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 /**
  * Query 0: Pass events through unchanged. However, force them to do a round trip through
  * serialization so that we measure the impact of the choice of coders.
  */
 public class Query0 extends NexmarkQueryTransform<Event> {
-    private static final Logger LOG = LoggerFactory.getLogger(Query0Launcher.class.getName());
+//    private static final Logger LOG = LoggerFactory.getLogger(Query0Launcher.class.getName());
 
     public Query0() {
         super("Query0");
-        LOG.info("Query0 instantiated");
+//        LOG.info("Query0 instantiated");
     }
 
     @Override
     public PCollection<Event> expand(PCollection<Event> events) {
         final Coder<Event> coder = events.getCoder();
-        LOG.info("Query0 executed");
+//        LOG.info("Query0 executed");
         return events
                 // Force round trip through coder.
                 .apply(
