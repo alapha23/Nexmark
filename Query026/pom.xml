@@ -9,27 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Query0</artifactId>
+    <artifactId>Query026</artifactId>
 
-
-
-    <!--build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>fully.qualified.MainClass</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build-->
     <build>
         <plugins>
             <plugin>
@@ -44,7 +25,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <minimizeJar>true</minimizeJar>
+                            <!--minimizeJar>true</minimizeJar-->
                             <outputFile>
                                 ${project.build.directory}/${project.artifactId}-${project.version}-client-shaded.jar
                             </outputFile>
@@ -58,17 +39,19 @@
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
-        <dependency>
+        <!--dependency>
             <groupId>org.apache.beam</groupId>
             <artifactId>beam-sdks-java-test-utils</artifactId>
-            <version>2.11.0</version>
-        </dependency>
+            <version>2.6.0</version>
+        </dependency-->
         <dependency>
             <groupId>org.apache.beam</groupId>
             <artifactId>beam-sdks-java-nexmark</artifactId>
-            <version>2.11.0</version>
+            <version>2.6.0</version>
         </dependency>
     </dependencies>
+
 
 </project>

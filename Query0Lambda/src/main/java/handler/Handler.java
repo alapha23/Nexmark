@@ -1,4 +1,4 @@
-package query0lambda;
+package handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
@@ -21,16 +21,16 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 import java.util.Set;
 
-public class Query0Lambda implements RequestHandler<Map<String, Object>, Context> {
+public class Handler implements RequestHandler<Map<String, Object>, Context> {
 
 
-    private static final Logger LOG = LoggerFactory.getLogger(Query0Lambda.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Handler.class);
 
     @Override
     public Context handleRequest(Map<String, Object> input, Context context) {
-
+        String [] arg = new String[0];
         NexmarkOptions options =
-                PipelineOptionsFactory.fromArgs(null).withValidation().as(NexmarkOptions.class);
+                PipelineOptionsFactory.fromArgs(arg).withValidation().as(NexmarkOptions.class);
         Set<NexmarkConfiguration> configurations = options.getSuite().getConfigurations(options);
 
         for (NexmarkConfiguration configuration : configurations) {

@@ -25,6 +25,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <!--minimizeJar>true</minimizeJar-->
                             <outputFile>
                                 ${project.build.directory}/${project.artifactId}-${project.version}-client-shaded.jar
                             </outputFile>
@@ -44,10 +45,20 @@
             <artifactId>aws-lambda-java-core</artifactId>
             <version>1.1.0</version>
         </dependency>
-        <dependency>
+        <!--dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
             <version>1.1.0</version>
+        </dependency-->
+        <!--dependency>
+            <groupId>org.apache.beam</groupId>
+            <artifactId>beam-sdks-java-test-utils</artifactId>
+            <version>2.11.0</version>
+        </dependency-->
+        <dependency>
+            <groupId>org.apache.beam</groupId>
+            <artifactId>beam-sdks-java-nexmark</artifactId>
+            <version>2.11.0</version>
         </dependency>
     </dependencies>
 
