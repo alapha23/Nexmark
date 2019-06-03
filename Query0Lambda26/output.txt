@@ -1,1 +1,1 @@
-{"errorMessage":"Error loading class handler.Handler: org/apache/beam/sdk/nexmark/queries/NexmarkQuery","errorType":"java.lang.NoClassDefFoundError"}
+null

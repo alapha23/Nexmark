@@ -1,5 +1,6 @@
 package handler;
 
+import com.amazonaws.services.lambda.runtime.ClientContext;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.beam.sdk.Pipeline;
@@ -8,6 +9,7 @@ import org.apache.beam.sdk.nexmark.NexmarkOptions;
 import org.apache.beam.sdk.nexmark.NexmarkUtils;
 import org.apache.beam.sdk.nexmark.model.Event;
 import org.apache.beam.sdk.nexmark.model.KnownSize;
+import org.apache.beam.sdk.nexmark.model.Person;
 import org.apache.beam.sdk.nexmark.queries.NexmarkQuery;
 import org.apache.beam.sdk.nexmark.queries.NexmarkQueryModel;
 //import org.hbm.sdk.nexmark.queries.Query0;
@@ -18,15 +20,24 @@ import org.apache.beam.sdk.values.TimestampedValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Map;
 
-public class Handler implements RequestHandler<Map<String, Object>, Context> {
+public class Handler implements RequestHandler<Map<String, String>, Context> {
 
 
     private static final Logger LOG = LoggerFactory.getLogger(Handler.class);
 
     @Override
-    public Context handleRequest(Map<String, Object> input, Context context) {
+    public Context handleRequest(Map<String, String> input, Context context) {
+        LOG.info("MAYDAY");
+        LOG.info(input.get("data"));
+//        Gson gson = new Gson();
+        byte[] bytesEncoded = input.get("data").getBytes(); //gson.fromJson(input, byte[].class);
+        InputStream inStream = new ByteArrayInputStream(bytesEncoded);
+        final Event e  = EventSerializer.deserialize(inStream);
+
         String [] arg = new String[0];
         NexmarkOptions options =
                 PipelineOptionsFactory.fromArgs(arg).withValidation().as(NexmarkOptions.class);

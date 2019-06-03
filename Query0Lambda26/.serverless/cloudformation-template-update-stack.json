@@ -105,7 +105,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/gao/dev/1559209671134-2019-05-30T09:47:51.134Z/Query0Lambda26-1.0.jar"
+          "S3Key": "serverless/gao/dev/1559555064483-2019-06-03T09:44:24.483Z/Query0Lambda26-1.0.jar"
         },
         "FunctionName": "gao-dev-nexmark-query0",
         "Handler": "handler.Handler",
@@ -124,14 +124,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "NexmarkDashquery0LambdaVersionzf3JJ0ja3lDaav8C66tROUf0suptWXGru5xY41Lb26I": {
+    "NexmarkDashquery0LambdaVersiontnhHeSfz5ZatR0hftSGqmDMHoTKYvWWARL8gje5Mw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "NexmarkDashquery0LambdaFunction"
         },
-        "CodeSha256": "KR7UOK5QmGMQzIgRZE+0NNO5nXSOz3XkfiokW4qWp38="
+        "CodeSha256": "A+Hi8RvJYal+twLiKJjYejH9HD8bwuyFabuEKQfT480="
       }
     }
   },
@@ -144,7 +144,7 @@
     "NexmarkDashquery0LambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "NexmarkDashquery0LambdaVersionzf3JJ0ja3lDaav8C66tROUf0suptWXGru5xY41Lb26I"
+        "Ref": "NexmarkDashquery0LambdaVersiontnhHeSfz5ZatR0hftSGqmDMHoTKYvWWARL8gje5Mw"
       }
     }
   }

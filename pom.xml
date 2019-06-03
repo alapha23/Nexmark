@@ -15,6 +15,7 @@
         <module>Query026</module>
         <module>Query0Lambda26</module>
         <module>Query2Lambda26</module>
+        <module>Invoke</module>
     </modules>
 
     <properties>
