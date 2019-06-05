@@ -31,9 +31,7 @@ public class Handler implements RequestHandler<Map<String, String>, Context> {
 
     @Override
     public Context handleRequest(Map<String, String> input, Context context) {
-        LOG.info("MAYDAY");
-        LOG.info(input.get("data"));
-//        Gson gson = new Gson();
+        LOG.info("Handle event");
         byte[] bytesEncoded = input.get("data").getBytes(); //gson.fromJson(input, byte[].class);
         InputStream inStream = new ByteArrayInputStream(bytesEncoded);
         final Event e  = EventSerializer.deserialize(inStream);
@@ -57,15 +55,14 @@ public class Handler implements RequestHandler<Map<String, String>, Context> {
             Pipeline p = Pipeline.create(options);
             NexmarkUtils.setupPipeline(configuration.coderStrategy, p);
 
-            LOG.info("Generate events");
+      //      LOG.info("Generate events");
             // generate events
-            PCollection<Event> source = p.apply("Query0" + ".ReadBounded", NexmarkUtils.batchEventsSource(configuration));
-            //sourceEventsFromSynthetic(p);;//createSource(p, now);
+//            PCollection<Event> source = p.apply("Query0" + ".ReadBounded", NexmarkUtils.batchEventsSource(configuration));
 
-            LOG.info("Apply query");
+  //          LOG.info("Apply query");
             // apply query
-            PCollection<TimestampedValue<KnownSize>> results =
-                    (PCollection<TimestampedValue<KnownSize>>) source.apply(query);
+    //        PCollection<TimestampedValue<KnownSize>> results =
+      //              (PCollection<TimestampedValue<KnownSize>>) source.apply(query);
 
             LOG.info("Run pipeline");
             // run pipeline

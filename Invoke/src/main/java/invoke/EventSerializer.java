@@ -14,9 +14,9 @@ public final class EventSerializer {
            result = Event.CODER.decode(in);
            return result;
        } catch(Exception e) {
+           e.printStackTrace();
            System.out.println("Decode failed");
-       } finally {
-           return null;
+           throw new RuntimeException(e);
        }
     }
 

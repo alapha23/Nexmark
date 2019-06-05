@@ -48,8 +48,23 @@ public class Query0 extends NexmarkQuery {
         LOG.info("Query0 instantiated");
     }
 
+    public void runQuery(Event e) {
+        final Counter bytesMetric = Metrics.counter(name, "bytes");
+        EventCoder coder = new EventCoder();
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        coder.encode(e, outStream);
+        byte[] byteArray = outStream.toByteArray();
+        bytesMetric.inc((long) byteArray.length);
+        ByteArrayInputStream inStream = new ByteArrayInputStream(byteArray);
+        LOG.info(byteArray.toString());
+        LOG.info(inStream.toString());
+        Event event = coder.decode(inStream);
+        LOG.info(event.toString());
+    }
+
     private PCollection<Event> applyTyped(PCollection<Event> events) {
         final Coder<Event> coder = events.getCoder();
+        LOG.info("Query0 applied");
         return events
                 // Force round trip through coder.
                 .apply(
